@@ -1,0 +1,68 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col text-center">
+            <h1>Contact</h1>
+            <p class="subtitle">Complétez les informations ci-dessous pour nous contacter</p>
+        
+            {{ form_start(form, {'action': path('cms_contact'), 'method': 'POST', 'attr': {'novalidate': 'novalidate'}}) }}
+
+            {% include "_flash_messages.html.twig" %}
+
+            <div class="form-block-wrapper text-left contact-form-wrapper">
+                <div class="form-group civility-wrapper {% if form_errors(form.civility) %} has-error{% endif %}" id="civilite">
+                    <span class="label pull-left ">Civilité<sup>*</sup> :</span>
+                    {{ form_widget(form.civility) }}
+                    {{ form_errors(form.civility) }}
+                </div>
+                <div class="row">
+                    <div class="col-12 col-xl-6">
+                        <div class="form-group{% if form_errors(form.lastname) %} has-error{% endif %}">
+                            {{ form_widget(form.lastname, {'attr': {'class': 'form-control required', 'placeholder': 'Nom*', 'maxlength': 80}}) }}
+                            {% if form_errors(form.lastname) %}<span class="error-form">{{ form_errors(form.lastname) }}</span>{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-6">
+                        <div class="form-group{% if form_errors(form.firstname) %} has-error{% endif %}">
+                            {{ form_widget(form.firstname, {'attr': {'class': 'form-control required', 'placeholder': 'Prénom*', 'maxlength': 80}}) }}
+                            {% if form_errors(form.firstname) %}{{ form_errors(form.firstname) }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-6">
+                        <div class="form-group{% if form_errors(form.email) %} has-error{% endif %}">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control required', 'placeholder': 'Email*', 'maxlength': 50}}) }}
+                            {% if form_errors(form.email) %}{{ form_errors(form.email) }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-6">
+                        <div class="form-group{% if form_errors(form.reference) %} has-error{% endif %}">
+                            {{ form_widget(form.reference, {'attr': {'class': 'form-control required', 'placeholder': 'Référence*', 'maxlength': 13}}) }}
+                            {% if form_errors(form.reference) %}{{ form_errors(form.reference) }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-12">
+                        <div class="form-group{% if form_errors(form.object) %} has-error{% endif %}">
+                            {{ form_widget(form.object, {'attr': {'class': 'form-control required', 'placeholder': 'Objet*', 'maxlength': 75}}) }}
+                            {% if form_errors(form.object) %}{{ form_errors(form.object) }}{% endif %}
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-12">
+                        <div class="form-group{% if form_errors(form.message) %} has-error{% endif %}">
+                            {{ form_widget(form.message, {'attr': {'class': 'form-control required', 'placeholder': 'Message*'}}) }}
+                            {% if form_errors(form.message) %}{{ form_errors(form.message) }}{% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-block-wrapper text-center contact-form-wrapper">
+                <div class="btn-wrapper">
+                    <input type="submit" class="btn btn-primary" value="Envoyer"/>
+                </div>
+                <p class="text-center required-txt-wrapper"><sup>*</sup>Champs obligatoires</p>
+                {# <a class="link-primary" href="{{ path('suivi_get_numero', {}) }}" title="Référence de participation oubliée ?">Référence de participation oubliée ?</a> #}
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

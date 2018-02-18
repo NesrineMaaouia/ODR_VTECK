@@ -1,0 +1,779 @@
+/******** PARAMETRES VARIABLES *********/
+/* Global */
+$body-color: #000;
+$font-family-base: 'Raleway', sans-serif;
+$font-family-secondary: 'Raleway', sans-serif;
+$font-weight-base: normal;
+$body-bg: #fff;
+$line-height-base: 1;
+$text-color: #000;
+$error-color: #be3442;
+
+$primary-color: #d61f37;
+$primary-hover-color: #c82038;
+
+$secondary-color: #9bb1bd; 
+$secondary-hover-color: #8799a3;
+
+$tertiary-color: #2b8053;
+$tertiary-hover-color: #1d5035;
+
+/* Nav header + banner */
+$nav-link-color: #000;
+$nav-hover-color: #d61f37;
+$nav-active-color: #d61f37;
+$banner-bg-color: #fff;
+$header-bg-color: #fff;
+/**/
+
+/* Footer */
+$footer-top-bg-color: #2b8053;
+$footer-top-txt-color: #fff;
+$footer-bottom-bg-color: #9bb1bd;
+$footer-bottom-txt-color: #fff;
+/**/
+
+/* Buttons */
+$btn-text-color: #fff;
+$btn-bg-color: #d61f37;
+$btn-text-hover-color: #fff;
+$btn-bg-hover-color: #c82038;
+/**/
+
+/* Formulaires participation & contact */
+$input-border-color: #d8d8d8;
+$uploader-bg-color: #eaeaea;
+/**/
+/******** END PARAMETRES VARIABLES *********/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:100,400,500,700,900');
+// @import "fonts.css";
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~font-awesome/css/font-awesome.css';
+@import '~hamburgers/dist/hamburgers.css';
+
+/********** GLOBAL **********/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    font-size:14px;
+    /* Margin bottom by footer height */
+    margin-bottom: 205px;
+}
+
+a {
+    -webkit-transition: all .2s linear 0s;
+    -moz-transition: all .2s linear 0s;
+    transition: all .2s linear 0s;
+    color:inherit;
+}
+
+button:focus{
+    outline: none;
+}
+
+[type="checkbox"], [type="radio"] {
+	margin-right: 5px;
+}
+
+.main-wrapper {
+    padding: 0 !important;
+}
+
+.content-wrapper {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.content-wrapper h1 {
+    color: $primary-color;
+    font-size: 25px;
+    font-family: $font-family-secondary;
+    margin-bottom: 10px;
+    margin-top: 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.content-wrapper .subtitle {
+    font-size: 16px;
+    color: $text-color;
+    font-family: $font-family-base;
+    margin-bottom: 0;
+}
+
+.content-wrapper .grey-separator {
+    margin-top: 20px;
+	margin-bottom: 30px;
+	border: 0;
+    border-top: 1px solid $primary-color;
+    width: 200px;
+}
+
+.content-wrapper .btn-primary {
+	color: $btn-text-color;
+	background-color: $btn-bg-color;
+    border-color: $btn-bg-color;
+    font-family: $font-family-secondary;
+    text-transform: uppercase;
+    white-space: normal;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 30px;
+    margin: 0 25px;
+}
+
+.content-wrapper .btn-primary:hover {
+	color: $btn-text-hover-color;
+	background-color: $btn-bg-hover-color;
+	border-color: $btn-bg-hover-color;
+}
+
+.content-wrapper .btn-primary:focus, .content-wrapper .btn-primary.focus {
+	box-shadow: none;
+}
+
+.content-wrapper .link-primary {
+	color: $primary-color;
+    font-family: $font-family-base;
+    text-decoration: underline;
+}
+
+.content-wrapper .link-primary:hover {
+	color: $primary-hover-color;
+}
+
+.txt-bold {
+    font-family: $font-family-secondary;
+}
+/******** END GLOBAL **********/
+
+/******** HEADER *********/
+header{
+    background: $header-bg-color;
+    padding:15px 0;
+    border-bottom: 8px solid $secondary-color;
+	border-top: 8px solid $secondary-color;
+}
+
+header .navbar {
+    display: inline-block;
+    margin-top: 0;
+    font-family: $font-family-secondary;
+    text-transform: uppercase;
+    padding: 0;
+    width: 100%;
+}
+
+header .navbar .logo-wrapper {
+    display: inline-block;
+    margin: 15px 0 20px 0;
+}
+
+header .navbar .navbar-toggler {
+    margin-top: 20px;
+}
+
+header .navbar-toggleable-md .navbar-collapse {
+	width: initial;
+	text-align: right;
+	float: right;
+	margin-top: 23px;
+}
+
+header .navbar li {
+    border-right: 1px solid $nav-link-color;
+}
+
+header .navbar li:last-child {
+    border-right: none;
+}
+
+header .navbar li.active a {
+    color: $nav-active-color;
+}
+
+header .navbar li.active a:hover, header .navbar li.active a:focus {
+    text-decoration: none;
+}
+
+header .navbar a {
+    color: $nav-link-color;
+    margin-right: 10px;
+	margin-left: 10px;
+}
+
+header .navbar a:hover, header .navbar a:focus {
+    color:$nav-hover-color;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+    background-color: $nav-link-color;
+}
+
+.hamburger:hover {
+	opacity: 1;
+}
+
+.navbar-toggler:focus, .navbar-toggler:hover {outline:none;}
+/******** END HEADER *********/
+
+
+/******** BANNER ********/
+.banner-wrapper {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    background-color: $banner-bg-color;
+}
+
+.banner {
+    margin: 0;
+}
+/******** END BANNER ********/
+
+/******** FOOTER *********/
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 205px;
+}
+
+footer .footer-top {
+    background: $footer-top-bg-color;
+}
+
+footer .footer-top ul {
+    list-style: none;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+footer .footer-top ul li {
+    display: inline-block;
+    padding: 0 25px;
+}
+
+footer .footer-top ul li a {
+    color: $footer-top-txt-color;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: $font-family-secondary;
+    font-weight: bold;
+}
+
+footer .footer-bottom {
+    background-color: $footer-bottom-bg-color;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+footer .footer-bottom img {
+    margin-bottom: 20px;
+}
+
+footer .footer-bottom p {
+    color: $footer-bottom-txt-color;
+	font-size: 11px;
+	line-height: 12px;
+	margin-bottom: 0;
+}
+
+footer .footer-bottom .link-top-page {
+    color: $footer-bottom-txt-color;
+    font-size: 13px;
+    text-decoration: none;
+    background: url(../img/arrow-top.png) no-repeat right 5px ;
+    padding-right: 25px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid $footer-bottom-txt-color;
+    margin-bottom: 30px;
+	display: inline-block;
+}
+
+footer .footer-bottom .tri-wrapper {
+    display: inline-block;
+}
+
+footer .footer-bottom .tri-wrapper p {
+    float: left;
+    margin-right: 10px;
+    line-height: 14px;
+}
+
+footer .footer-bottom .tri-wrapper a {
+    color:$footer-bottom-txt-color;
+}
+
+footer .footer-bottom .tri-wrapper img {
+    float: left;
+    margin-bottom: 0;
+}
+
+footer .footer-bottom .mangez-bougez {
+    width: 100%;
+	display: inline-block;
+    border-bottom: 2px solid $footer-bottom-txt-color;
+    border-top: 2px solid $footer-bottom-txt-color;
+    margin-bottom: 20px;
+}
+
+footer .footer-bottom .mangez-bougez h4 {
+    font-size: 19px;
+    text-transform: uppercase;
+    color: $footer-bottom-txt-color;
+    margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+footer .footer-bottom .mangez-bougez h4 a {
+    color: $footer-bottom-txt-color;
+}
+/******** END FOOTER *********/
+
+/******** HOMEPAGE *********/
+.home-desc-wrapper {
+    margin-bottom: 50px;
+}
+
+.home-desc-wrapper p {
+    font-size: 18px;
+	font-weight: 500;
+}
+
+.home-desc-wrapper .num-list {
+    background-color: $primary-color;
+    border-radius: 50px;
+    font-size: 30px;
+    color: $white;
+    display: inline-block;
+	padding: 8px 17px 13px 17px;
+    width: 50px;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+/******** END HOMEPAGE **********/
+
+/******** FORM PARTICIPATION *********/
+.form-block-wrapper {
+    display: inline-block;
+    width: 100%;
+    margin-top: 50px;
+    text-align: left;
+    color: $text-color;
+    font-size: 16px;
+}
+
+.form-block-wrapper h2 {
+    font-size: 20px;
+    color: $tertiary-color;
+    text-transform: uppercase;
+    font-family: $font-family-secondary;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-block-wrapper .separator {
+    margin: 0;
+    background: $tertiary-color;
+    max-width: 200px;
+    margin: 0 auto 30px auto;
+}
+
+.form-block-wrapper .radios-wrapper {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.form-block-wrapper .radios-wrapper label {
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+.form-block-wrapper .label {
+    font-size: 16px;
+}
+
+.form-block-wrapper .form-control{
+    border-radius: 0;
+    border:1px solid $input-border-color;
+}
+
+.form-block-wrapper label sup, .form-block-wrapper .label sup{
+    color: $text-color;
+}
+
+.form-block-wrapper .uploader-wrapper {
+    background-color: $uploader-bg-color;
+    display: inline-block;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.form-block-wrapper .uploader-wrapper .btn-default {
+    color: $btn-text-color;
+	background-color: $primary-color;
+    border-color: $primary-color;
+    font-family: $font-family-secondary;
+    text-transform: uppercase;
+    white-space: normal;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.form-block-wrapper .uploader-wrapper .btn-default:hover {
+    color: $btn-text-color;
+	background-color: $primary-hover-color;
+	border-color: $primary-hover-color;
+}
+
+.form-block-wrapper .uploader-wrapper .btn-default:focus, .form-block-wrapper .uploader-wrapper .btn-default.focus {
+	box-shadow: none;
+}
+
+.form-block-wrapper .uploader-wrapper .file-input-name {
+    margin-left: 0;
+    font-size: 11px;
+    color: $primary-color;
+}
+
+.form-block-wrapper .uploader-wrapper .infos-wrapper .info-detail img {
+    float: left;
+}
+
+.form-block-wrapper .uploader-wrapper .infos-wrapper .info-detail p {
+    color: $body-color;
+    font-size: 11px;
+    float: left;
+    margin-bottom: 0;
+    padding-left: 10px;
+    max-width: 120px;
+}
+
+.form-block-wrapper .txt-wrapper {
+    margin-top: 20px;
+    color: $text-color;
+    font-size: 12px;
+}
+
+.form-block-wrapper .txt-wrapper .mentions-txt {
+    margin-top: 20px;
+    text-align: left;
+    font-weight: 100;
+	font-size: 14px;
+}
+
+/* Radio buttons questionnaire */
+.question-wrapper {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    h3 {
+        width: 100%;
+        font-size: 16px;
+	    margin-bottom: 20px;
+    }
+    input[type="radio"] {
+        display: none;
+        &:checked {
+            + .box {
+                background-color: $primary-color;
+                border: 1px solid $primary-color;
+                span {
+                    color: $white;
+                }
+            }
+        }
+    }
+    .box {
+        width: 100%;
+        height: 60px;
+        background-color: $white;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+        transition: all 250ms ease;
+        will-change: transition;
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        font-weight: 400;
+        border-radius: 0.25rem;
+        span {
+            text-transform: uppercase;
+            display: inline-block;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    .box-2-lines span {
+        padding-top: 13px;
+	    padding-bottom: 13px;
+    }
+}
+/**/
+/******** END FORM PARTICIPATION *********/
+
+/******** ERREURS FORM **********/
+.has-error {
+    font-size: 14px;
+    color: $error-color;
+    font-family: $font-family-secondary;
+}
+
+.has-error ul {
+    padding-left: 17px;
+}
+
+.error-form {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $error-color;
+    font-family: $font-family-secondary;
+}
+
+.error-form ul {
+    padding-left: 17px;
+    margin-bottom: 10px;
+	margin-top: 5px
+}
+/******* END ERREURS FORM *********/
+
+/******* RECAP & STATUT PARTICIPATION *********/
+.recap-wrapper {
+    margin-top: 50px;
+}
+
+.recap-wrapper .recap-title-wrapper {
+    height: 20px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.recap-wrapper .recap-title-wrapper h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: $tertiary-color;
+    font-family: $font-family-secondary;
+    text-transform: uppercase;
+    position: absolute;
+	top: 0;
+	left: 0;
+	background-color: $body-bg;
+    padding-right: 20px;
+    z-index: 9999;
+}
+
+.recap-wrapper .recap-title-wrapper hr {
+    border-top: 1px solid $tertiary-color;
+    position: absolute;
+	top: -5px;
+	left: 0;
+	right: 0;
+	z-index: 9998;
+}
+
+.recap-wrapper p {
+    color: $text-color;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.recap-wrapper p strong {
+    font-family: $font-family-secondary;
+}
+
+.recap-wrapper .btn {
+    margin: 0 0 10px 0;
+}
+/******* END RECAP & STATUT PARTICIPATION *********/
+
+/******* CONFIRMATION *********/
+.confirmation-txt {
+    font-size: 14px;
+	line-height: 14px;
+	color: $text-color;
+	margin-top: 50px;
+	margin-bottom: 0;
+}
+/******* END CONFIRMATION *********/
+
+/******* CHECK STATUT *******/
+.check-statut-wrapper {
+    margin-top: 50px;
+}
+
+.check-statut-wrapper .form-control {
+	border-radius: 0;
+	border: 1px solid $input-border-color;
+}
+
+.check-statut-wrapper .btn-wrapper {
+	margin-top: 5px;
+}
+
+.check-statut-wrapper .required-txt-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: $text-color;
+	font-size: 12px;
+}
+
+.check-statut-wrapper .has-error ul {
+    list-style: none;
+	text-align: left;
+	padding-left: 0;
+	margin-top: 10px;
+}
+/******* END CHECK STATUT *******/
+
+/******* MODALITÉS *********/
+.modalites-wrapper h2 {
+    color:$tertiary-color;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: $font-family-secondary;
+    margin-top: 15px;
+}
+
+.modalites-wrapper .subtitle {
+    font-size: 16px;
+}
+
+.modalites-wrapper .modalites-txt-wrapper {
+    color:$text-color;
+    font-size: 14px;
+    margin-top: 50px;
+    line-height: 20px;
+}
+
+.modalites-wrapper .modalites-txt-wrapper ul {
+    padding-left: 25px;
+}
+
+.modalites-wrapper .modalites-txt-wrapper strong {
+    font-family: $font-family-secondary;
+}
+
+.modalites-wrapper .modalites-txt-wrapper a {
+    color:$primary-color;
+}
+
+.modalites-wrapper .modalites-txt-wrapper span {
+    color:$primary-color;
+}
+/******* END MODALITÉS *********/
+
+/******* CONTACT ********/
+.contact-form-wrapper span {
+    margin-right:10px;
+}
+
+.contact-form-wrapper .civility-wrapper label {
+    margin-right:10px;
+}
+
+.contact-form-wrapper .required-txt-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: $text-color;
+	font-size: 12px;
+}
+
+.contact-form-wrapper textarea {
+    height: 15em;    
+}
+
+.contact-form-wrapper .has-error ul {
+    margin-top: 10px;
+}
+/******* END CONTACT ********/
+
+
+/************* RESPONSIVE **************/
+
+/* 4K and over */
+@media screen and (min-width: 1441px) {
+
+}
+
+/* Laptop L */
+@media screen and (max-width: 1440px) {
+    
+}
+
+@media screen and (max-width: 1199px){
+
+}
+
+/* Laptop M */
+@media screen and (max-width: 1024px) {
+    
+}
+
+@media screen and (max-width: 991px) {
+    .navbar {width: 100%;}
+    header .navbar-toggleable-md .show,
+    header .navbar-toggleable-md .collapsing {display: inline-block; width: 100%; text-align: center;}
+    header .navbar-nav {display: inline-block;}
+    header .navbar li {display: table-cell;}
+    .content-wrapper .btn-primary:first-child {margin-bottom: 20px;}
+    .form-block-wrapper .uploader-wrapper .infos-wrapper .info-detail p {margin-top: 10px;}
+    .question-wrapper .box {height: 65px;}
+    .question-wrapper .box span {font-size: 13px; padding-left: 5px; padding-right: 5px; padding-top: 25px;}
+    .question-wrapper .box-2-lines span {padding-top: 13px;}
+}
+
+/* Tablet */
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 767px) {
+    .content-wrapper .btn {	margin-bottom: 20px; width: 100%; }
+    .home-desc-wrapper img { width: 90%;}
+    .home-desc-wrapper .col-md-4 { margin-bottom: 50px;}
+    .home-desc-wrapper .col-md-4:last-child { margin-bottom: 0px;}
+    .content-wrapper .btn-primary {margin-left: 0; margin-right: 0;}
+    .question-wrapper .box-2-lines span {padding-top: 18px;}
+}
+
+@media screen and (max-width: 599px) {
+    
+}
+
+@media screen and (max-width: 480px) {
+    header .navbar-nav {width:100%;}
+    header .navbar-nav li {width:100%; display: block; border-right: none;}
+    .recap-wrapper .recap-title-wrapper {height: auto;}
+    .recap-wrapper .recap-title-wrapper h2 {float: none; width: 100%; text-align: center; position: inherit;}
+    .recap-wrapper .recap-title-wrapper hr {position: inherit; width: 250px;}
+    .recap-wrapper p {text-align: center;}
+}
+
+/* Mobile L */
+@media screen and (max-width: 425px) {
+
+}
+
+/* Mobile M */
+@media screen and (max-width: 375px) {
+
+}
+
+/* Mobile S */
+@media screen and (max-width: 320px) {
+
+}

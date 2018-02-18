@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>{% block title %}VTech{% endblock %}</title>
+
+        <meta charset="utf-8">
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        {% block stylesheets %}
+            <link href="{{ asset('build/css/app.css') }}" rel="stylesheet" type="text/css">
+        {% endblock %}
+    </head>
+    
+    <body>
+        <header>
+            <div class="container">
+                <nav class="navbar navbar-toggleable-md">
+                    <a id="logo" class="logo-wrapper" href="{{ path('cms_homepage') }}">
+                        {#<img src="{{ asset('build/images/logo.jpg') }}" alt="Prostamol" />#}
+
+                    </a>
+
+                    <button class="navbar-toggler navbar-toggler-right hamburger hamburger--slider" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="hamburger-box">
+                            <span class="hamburger-inner"></span>
+                        </span>
+                    </button>
+
+                </nav>
+            </div>
+        </header>
+
+        <section class="container-fluid main-wrapper">
+            {% block banniere %}
+                <figure class="banner-wrapper">
+                    {#<img src="{{ asset('build/images/banner.jpg') }}" class="img-fluid banner" alt="HUMER - Jusqu'à 3€ remboursés" />#}
+                </figure>
+            {% endblock %}
+
+            <div class="container content-wrapper">
+                {% block body %}{% endblock %}
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-top">
+                <ul class="container text-center">
+                    <li>
+                        <a href="{{ path('cms_modalite') }}" title="Modalités">Modalités</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('cms_contact') }}" title="Contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+
+            </div>
+        </footer>
+        
+        {% block javascripts %}
+            <script src="{{ asset('build/js/app.js') }}"></script>
+        {% endblock %}
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111450952-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-111450952-1');
+        </script>
+    </body>
+</html>

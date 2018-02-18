@@ -1,0 +1,33 @@
+/var/cache/*
+!var/cache/.gitkeep
+/var/logs/*
+!var/logs/.gitkeep
+/var/sessions/*
+!var/sessions/.gitkeep
+/public/uploads/*
+!public/uploads/.gitkeep
+
+###> symfony/framework-bundle ###
+.env
+/public/bundles/
+/var/
+/vendor/
+###< symfony/framework-bundle ###
+
+###> symfony/phpunit-bridge ###
+/phpunit.xml
+###< symfony/phpunit-bridge ###
+
+###> symfony/web-server-bundle ###
+.web-server-pid
+###< symfony/web-server-bundle ###
+
+###> IDE ###
+/nbproject/
+/.idea/
+###< IDE ###
+
+###> symfony/webpack-encore-pack ###
+/node_modules/
+/public/build/
+###< symfony/webpack-encore-pack ###

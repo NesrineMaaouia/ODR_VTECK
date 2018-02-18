@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <h1>Vous avez oublié votre référence de participation ?</h1>
+    <p>Veuillez nous indiquer l’email avec lequel vous avez participé</p>  
+    <form method="post">
+        <div class="form-row"> 
+            <div class="form-group col">
+                <label for="email" class="required">Vous n'avez plus votre numéro de suivi et vous voulez le recevoir par email.</label>
+                <input type="text" name="email" required="required" class="form-control" placeholder="Email*">
+            </div>
+        </div>
+        <p class="text-center">
+            <button type="submit" class="btn mybtn">Valider</button>
+        </p>
+    </form>   
+{% endblock %}

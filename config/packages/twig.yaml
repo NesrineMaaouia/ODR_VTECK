@@ -1,0 +1,11 @@
+twig:
+    paths: ['%kernel.project_dir%/templates']
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+    number_format:
+        decimals: 2
+        decimal_point: ','
+        thousands_separator: ' '
+    cache: '%kernel.cache_dir%/twig'
+    charset: '%kernel.charset%'
+    debug: '%kernel.debug%'

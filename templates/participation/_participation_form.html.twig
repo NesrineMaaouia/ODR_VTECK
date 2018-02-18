@@ -1,0 +1,131 @@
+{{ form_start(form, {'method': 'POST', 'attr': {'novalidate': 'novalidate'}}) }}
+ <div class="form-block-wrapper">
+        <h2>Vos coordonnées</h2>
+        <hr class="separator" />
+        {% if form_errors(form) %}
+            <div class="form-group has-error">
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+
+        <div class="form-row">
+            <div class="form-group">
+                <span class="label pull-left">Civilité<sup>*</sup> :</span>
+                <div class="radios-wrapper pull-left">{{ form_widget(form.user.civility) }}</div>
+                <span class="error-form"> {{ form_errors(form.user.civility) }}</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.user.lastname, {'attr': {'class': 'form-control required', 'placeholder': 'Nom*', 'maxlength': 80}}) }}
+                {% if form_errors(form.user.lastname) %}<span class="error-form">{{ form_errors(form.user.lastname) }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_widget(form.user.firstname, {'attr': {'class': 'form-control required', 'placeholder': 'Prénom*', 'maxlength': 80}}) }}
+                {% if form_errors(form.user.firstname) %}<span class="error-form">{{ form_errors(form.user.firstname) }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.user.address, {'attr': {'class': 'form-control required', 'placeholder': 'Adresse*', 'maxlength': 38}}) }}
+                {% if form_errors(form.user.address) %}<span class="error-form">{{ form_errors(form.user.address) }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_widget(form.user.address2, {'attr': {'class': 'form-control', 'placeholder': 'Complément d\'adresse', 'maxlength': 38}}) }}
+                {% if form_errors(form.user.address2) %}<span class="error-form">{{ form_errors(form.user.address2) }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.user.codePostal, {'attr': {'class': 'form-control required js-numeric', 'placeholder': 'Code Postal*', 'maxlength': 5}}) }}
+                {% if form_errors(form.user.codePostal) %}<span class="error-form">{{ form_errors(form.user.codePostal) }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_widget(form.user.ville, {'attr': {'class': 'form-control required', 'placeholder': 'Ville*', 'maxlength': 35}}) }}
+                {% if form_errors(form.user.ville) %}<span class="error-form">{{ form_errors(form.user.ville) }}</span>{% endif %}
+            </div>
+        </div>
+        <div class="row">
+         <div class="form-group col-md-12">
+             {{ form_widget(form.user.email, {'attr': {'class': 'form-control required', 'placeholder': 'Email*', 'maxlength': 50}}) }}
+             {% if form_errors(form.user.email) %}<span class="error-form">{{ form_errors(form.user.email) }}</span>{% endif %}
+         </div>
+
+         </div>
+    </div>
+
+    <div class="form-block-wrapper">
+        <h2>VOS ACHATS</h2>
+        <hr class="separator" />
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.datePurchased, {'attr': {'class': 'form-control required js-date-mask', 'placeholder': 'Date d\'achat (JJ/MM/AAAA)*', 'maxlength': 13}}) }}
+                {% if form_errors(form.datePurchased) %}<span class="error-form">{{ form_errors(form.datePurchased) }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_widget(form.enseigne, {'attr': {'class': 'form-control required js-numeric', 'maxlength': 13}}) }}
+                {% if form_errors(form.enseigne) %}<span class="error-form">{{ form_errors(form.enseigne) }}</span>{% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_widget(form.eanProduct, {'attr': {'class': 'form-control required js-numeric', 'placeholder': 'Code-barres N° 1*', 'maxlength': 13}}) }}
+                {% if form_errors(form.eanProduct) %}<span class="error-form">{{ form_errors(form.eanProduct) }}</span>{% endif %}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_widget(form.eanProduct2, {'attr': {'class': 'form-control required js-numeric', 'placeholder': 'Code-barres N° 2*', 'maxlength': 13}}) }}
+                {% if form_errors(form.eanProduct2) %}<span class="error-form">{{ form_errors(form.eanProduct2) }}</span>{% endif %}
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="form-block-wrapper">
+        <h2>VOTRE CADEAU</h2>
+        <hr class="separator" />
+        <div class="container">
+            <div class="row">
+                <span class="label pull-left">Choisir votre cadeau<sup>*</sup> :</span>
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <div class="image-prod">
+                            <label for="{{ product.numeoreference }}">
+                                <img class="img-responsive img-center small"
+                                     src="{{ asset('build/images/'~ product.image ) }}"
+                                     alt="image"
+                                     style="width:20em "/>
+                            </label>
+                            {% if product.stock == 0 %}
+                                <div class="mesaj"><p>Victime de son succès</p></div>
+                            {% endif %}
+                        </div>
+                        <div class="clearfix"></div>
+                        <label class="custom-radio-button selectioner">
+                            <input type="radio" name="product" value="{{ product.id }}"
+                                   {% if product.stock == 0 %}disabled{% endif %}
+                                   id="{{ product.numeoreference }}" required/>
+                            <span class="helping-el"></span>
+                            <span class="label-text">Sélectionner</span>
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="form-block-wrapper">
+        <div class="btn-wrapper text-center">
+            <button type="submit" class="btn btn-primary" title="Valider">Je valider</button>
+        </div>
+    </div>
+{{ form_end(form) }}

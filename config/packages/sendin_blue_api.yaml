@@ -1,0 +1,49 @@
+parameters:
+    email_confirmation:
+        id: 220
+        to: "#user.email#"
+        attr:
+            PRENOM : "#user.firstname#"
+            NOM : "#user.lastname#"
+            SUIVI : "#participation.num#"
+        headers:
+            Content-Type: "text/html;charset=iso-8859-1"
+
+    email_numerosuivi:
+        id: 249
+        to: "#user.email#"
+        attr:
+            PRENOM : "#user.firstname#"
+            NOM : "#user.lastname#"
+            SUIVI : "#participation.num#"
+        headers:
+            Content-Type: "text/html;charset=iso-8859-1"
+
+    email_replay:
+        id: 377
+        to: "#user.email#"
+        attr:
+            PRENOM : "#user.firstname#"
+            NOM : "#user.lastname#"
+            SUIVI : "#participation.num#"
+        headers:
+            Content-Type: "text/html;charset=iso-8859-1"
+
+    email_contact:
+        id: 243
+        to: '%env(ADMIN_CONTACT)%'
+        attr:
+            EXPEDITEUR : "SOGEC"
+            TEXT : "Message de #civilite# #contact.firstname# #contact.lastname# <br>
+                    Email : #contact.email# <br>
+                    Reference : #contact.reference# <br>
+                    objet : #contact.object# <br>
+                    message : #contact.message#"
+        headers:
+            Content-Type: "text/html;charset=iso-8859-1"
+
+#sendinblue
+sendin_blue_api:
+    api_key: rK4GUJmh5AEzxaj0
+    # Our library supports a timeout value, which is an optional parameter, default is 30,000 MS ( 30 secs )
+    timeout: 60000

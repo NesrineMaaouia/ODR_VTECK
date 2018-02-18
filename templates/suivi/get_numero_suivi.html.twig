@@ -1,0 +1,30 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col text-center">
+            <h1>Vous avez oublié votre référence de participation ?</h1>
+            <p class="subtitle">Veuillez nous indiquer l’e-mail avec lequel vous avez participé.</p>
+            
+            <form method="post" class="check-statut-wrapper" novalidate="novalidate">
+                {% include "_flash_messages.html.twig" %}
+                {% if form_errors(form) %}
+                    <div class="form-group has-error">
+                        {{ form_errors(form) }}
+                    </div>
+                {% endif %}
+                <div class="col-12 col-xl-12">
+                    <div class="form-group{% if form_errors(form.email) %} has-error{% endif %}">
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control required', 'placeholder': 'E-mail*', 'maxlength': 50}}) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+                </div>
+                <div class="btn-wrapper">
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                    {{ form_widget(form._token) }}
+                </div>
+                <p class="text-center required-txt-wrapper"><sup>*</sup>Champs obligatoires</p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

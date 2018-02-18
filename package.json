@@ -1,0 +1,26 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.19.0",
+        "bootstrap": "4.0.0-alpha.6",
+        "copy-webpack-plugin": "^4.4.1",
+        "file-loader": "^1.1.5",
+        "jquery": "^3.2.1",
+        "jquery-inputmask": "^1.0.1",
+        "node-sass": "^4.7.2",
+        "resolve-url-loader": "^2.2.0",
+        "sass-loader": "^6.0.6",
+        "tether": "^1.4.3"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production"
+    },
+    "dependencies": {
+        "font-awesome": "^4.7.0",
+        "hamburgers": "^0.9.1"
+    }
+}

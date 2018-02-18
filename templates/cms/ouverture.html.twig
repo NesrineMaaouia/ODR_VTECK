@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div class="col text-center">
+        <h1>Page d'ouverture</h1>
+        <div>
+            <h3>L'opération n'est pas encore ouverte.</h3>
+            <p class="text-center">Rendez-vous à partir du {{ date_ouverture|date('d M Y à H:i') }} pour faire votre demande de remboursement.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

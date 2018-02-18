@@ -1,0 +1,81 @@
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    router.request_context.host: '%env(RQST_CTXT_HOST)%'
+    router.request_context.scheme: '%env(RQST_CTXT_SCHEMA)%'
+    locale: 'fr'
+    uploads_dir: '%kernel.project_dir%/public/uploads/'
+    google_recaptcha_secret: 6LcsHDgUAAAAALx546btPq9nZ638--P3SEQwqji2
+    operation_options:
+        route_whitelist: ['cms_ouverture', 'cms_fermeture', 'cms_modalite', 'suivi_statut', 'suivi_get_numero']
+        operation_dates: ['2018-01-15 00:00:00', '2018-02-29 00:00:00']
+        ip_whitelist: ['%env(IP_WHITELIST)%', '127.0.0.1','::1']
+        check_opening_date: '%env(bool:CHECK_OPENING_DATE)%'
+        check_whitelist: '%env(bool:CHECK_WHITELIST)%'
+        check_participation_limit: '%env(bool:CHECK_LIMIT_PARTICIPATION)%'
+        participation_limit: '%env(int:PARTICIPATION_LIMIT)%'
+        participation_limit_msg: 'Le nombre limite de participation est ateint'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/*'
+        # you can exclude directories or files
+        # but if a service is unused, it's removed anyway
+        exclude: '../src/{Controller,Form,Entity,Migrations,Tests}'
+
+    App\EventSubscriber\KernelControllerSubscriber:
+        arguments:
+            $options: '%operation_options%'
+
+    App\Service\SendInBlueProvider:
+        public: true
+        arguments:
+            $mailer: '@sendinblue_api'
+            $kernelEnv: '%kernel.environment%'
+            $deliveryAddress: '%env(DEV_DELIVERY_ADDRESS)%'
+
+    App\Service\APISogec:
+        public: true
+        arguments:
+            $url: '%env(API_SOGEC_URL)%'
+            $login: '%env(API_SOGEC_LOGIN)%'
+            $password: '%env(API_SOGEC_PASSWORD)%'
+            $operation: '%env(API_SOGEC_OPERATION)%'
+            $curlTimeout: '%env(API_SOGEC_CURL_TIMEOUT)%'
+
+    App\Service\APIAboutGoods:
+        public: true
+        arguments:
+            $api: '%env(ABOUT_GOODS_API)%'
+            $token: '%env(ABOUT_GOODS_TOKEN)%'
+            $secret: '%env(ABOUT_GOODS_SECRET)%'
+            $campaign: '%env(ABOUT_GOODS_CAMPAIGN)%'
+            $operation: '%env(API_SOGEC_OPERATION)%'
+            $uploadDir: '%uploads_dir%'
+
+    App\Service\FileUploader:
+        arguments:
+            $targetDir: '%uploads_dir%'
+
+    App\Service\ParticipationManager:
+        public: true
+        arguments:
+            $tplEmailConfirm: '%email_confirmation%'
+            $tplEmailReplay: '%email_replay%'
+
+    App\Service\ReCAPTCHA:
+        public: true
+        arguments:
+            $secret: '%google_recaptcha_secret%'

@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <div class="col text-center">
+        <h1>Oops! Une erreur {{ status_code }} s'est produite</h1>
+        <hr class="grey-separator"/>
+
+        <div class="btn-wrapper">
+            <p>Impossible d'affichez la page que vous essayez d'atteindre.</p>
+            <a class="btn btn-primary" href="{{ path("cms_homepage") }}" title="Revenir à la page d'accueil">Revenir à la page d'accueil</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

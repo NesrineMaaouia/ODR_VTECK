@@ -1,0 +1,32 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col text-center">
+            <div class="row home-desc-wrapper">
+                <div class="col-md-4">
+                    <p class="num-list">1</p>
+                    <img src="{{ asset('build/images/home1.jpg') }}" alt="" />
+                    <p>J'achète une boîte de Prostamol en Pharmacie</p>
+                </div>
+
+                <div class="col-md-4">
+                    <p class="num-list">2</p>
+                    <img src="{{ asset('build/images/home2.jpg') }}" alt="" />
+                    <p>Je fais la demande de remboursement en ligne en ajoutant mes preuves d’achats et mes coordonnées</p>
+                </div>
+
+                <div class="col-md-4">
+                    <p class="num-list">3</p>
+                    <img src="{{ asset('build/images/home3.jpg') }}" alt="" />
+                    <p>Après validation, je reçois un remboursement de 2€ par virement bancaire<sup>*</sup></p>
+                </div>
+            </div>
+            
+            <div class="btn-wrapper">
+                <a href="{{ path("participation_enregistrement") }}" role="button" class="btn btn-primary" title="Profiter de mon offre">Profiter de mon offre</a>
+                <a href="{{ path("suivi_statut") }}" role="button" class="btn btn-primary" title="Consulter le statut de ma demande">Consulter le statut de ma demande</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

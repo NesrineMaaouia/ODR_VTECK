@@ -1,0 +1,16 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+<div class="row">
+    <div class="col">
+        <h1 class="text-center">Récapitulatif de ma demande</h1>
+        <p class="subtitle text-center">Vérifiez l’exactitude des informations ci-dessous</p>
+        
+        {% include 'participation/_recap.html.twig' %}
+
+        <div class="btn-wrapper text-center">
+            <a href="{{ path(app.request.get('_route'), app.request.get('_route_params')) }}" class="btn btn-primary" title="Modifier">Modifier</a>
+            <a href="{{ path('participation_validation') }}" class="btn btn-primary" title="Valider">Valider</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

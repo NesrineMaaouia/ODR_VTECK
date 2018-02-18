@@ -1,0 +1,54 @@
+{% extends '@EasyAdmin/default/layout.html.twig' %}
+
+{% block page_title 'Admin | Tableau de bord' %}
+
+{% block body_id 'dashboard' %}
+
+{% block main %}
+
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">UTILISATEURS</span>
+                    <span class="info-box-number">{{ users|number_format() }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+
+        <!-- fix for small devices only -->
+        <div class="clearfix visible-sm-block"></div>
+
+        <div class="col-md-4 col-sm-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-green"><i class="fa fa-money"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Participations</span>
+                    <span class="info-box-number">{{ participations|number_format() }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-4 col-sm-12">
+            <div class="info-box">
+                <span class="info-box-icon bg-yellow"><i class="fa fa-comments"></i></span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">Messages</span>
+                    <span class="info-box-number">{{ contacts|number_format() }}</span>
+                </div>
+                <!-- /.info-box-content -->
+            </div>
+            <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+    </div>
+{% endblock %}

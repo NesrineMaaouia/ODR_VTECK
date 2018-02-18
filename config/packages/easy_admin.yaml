@@ -1,0 +1,93 @@
+easy_admin:
+    disabled_actions: ['edit', 'new', 'delete']
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    site_name: 'ODR Sogec'
+    design:
+        brand_color: '#B0413E'
+        menu:
+            - { label: 'Tableau de bord', icon: 'dashboard', route: 'admin_homepage', default: true }
+            - { label: 'Participations', entity: 'Participation', icon: 'money' }
+            - { label: 'Utilisateurs', entity: 'User', icon: 'users' }
+            - { label: 'Messages', entity: 'Contact', icon: 'comments' }
+    entities:
+        Participation:
+            class: App\Entity\Participation
+            label: 'Participations'
+            list:
+                actions: [{name: 'show', icon: 'search', label: ''}]
+                sort: 'createdAt'
+                fields:
+                    - 'id'
+                    - {property: 'num', label: 'Référence'}
+                    - {property: 'isConform', label: 'Conforme', type: 'boolean'}
+                    - {property: 'user.email', label: 'Email', type: 'email'}
+                    - {property: 'user.fullName', label: 'Participant'}
+                    - {property: 'invoice', label: "Ticket d'achat", sortable: false, type: 'file', base_path: 'uploads/'}
+                    - {property: 'createdAt', label: 'Date'}
+                title: "Liste des participations"
+            show:
+                title: 'Participation (#%%entity_id%%)'
+                fields:
+                    - 'id'
+                    - {property: 'num', label: 'Référence'}
+                    - {property: 'isConform', label: 'Conforme', type: 'boolean'}
+                    - {property: 'user.fullName', label: 'Participant'}
+                    - {property: 'user.email', label: 'Email', type: 'email'}
+                    - {property: 'user.address', label: 'Adresse'}
+                    - {property: 'user.codePostal', label: 'Code postal'}
+                    - {property: 'user.ville', label: 'Ville'}
+                    - {property: 'invoice', label: "Ticket d'achat", sortable: false, type: 'file', base_path: 'uploads/'}
+                    - {property: 'createdAt', label: 'Date'}
+                    - {property: 'errno', label: 'Code Erreur API'}
+                    - {property: 'errmsg', label: 'Message Erreur API'}
+                    - {property: 'sendinblueCode', label: 'Code de retour SendInBlue'}
+                    - {property: 'sendinblueMessage', label: 'Message de retour SendInBlue'}
+        User:
+            class: App\Entity\User
+            label: 'Utilisateurs'
+            list:
+                actions: [{name: 'show', icon: 'search', label: ''}]
+                fields:
+                    - 'id'
+                    - {property: 'firstname', label: 'Prénom'}
+                    - {property: 'lastname', label: 'Nom'}
+                    - {property: 'email', label: 'Email', type: 'email'}
+                    - {property: 'address', label: 'Adresse'}
+                    - {property: 'codePostal', label: "Code postal"}
+                    - {property: 'ville', label: "Ville"}
+                title: "Liste des utilisateurs"
+            show:
+                title: 'Utilisateurs (#%%entity_id%%)'
+                fields:
+                    - 'id'
+                    - {property: 'firstname', label: 'Prénom'}
+                    - {property: 'lastname', label: 'Nom'}
+                    - {property: 'email', label: 'Email', type: 'email'}
+                    - {property: 'address', label: 'Adresse'}
+                    - {property: 'codePostal', label: "Code postal"}
+                    - {property: 'ville', label: "Ville"}
+
+        Contact:
+            class: App\Entity\Contact
+            label: 'Messages'
+            list:
+                actions: [{name: 'show', icon: 'search', label: ''}]
+                fields:
+                    - 'id'
+                    - {property: 'lastname', label: 'Nom'}
+                    - {property: 'email', label: 'Email', type: 'email'}
+                    - {property: 'reference', label: 'Référence'}
+                    - {property: 'object', label: "Objet"}
+                    - {property: 'createdAt', label: "Date"}
+                title: "Liste des messages"
+            show:
+                title: 'Messages (#%%entity_id%%)'
+                fields:
+                    - {property: 'firstname', label: 'Prénom'}
+                    - {property: 'lastname', label: 'Nom'}
+                    - {property: 'email', label: 'Email', type: 'email'}
+                    - {property: 'object', label: 'Objet'}
+                    - {property: 'message', label: "Message"}

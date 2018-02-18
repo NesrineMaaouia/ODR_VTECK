@@ -1,0 +1,43 @@
+<div class="recap-wrapper">
+    <div class="recap-title-wrapper">
+        <h2>Vos coordonnées</h2>
+        <hr class="h-line"/>
+    </div>
+
+    <p>
+        {{ (user.civility == 1) ? "Monsieur" : "Madame" }} {{ user.firstname ~' '~user.lastname }}
+        <br />
+        {{ user.address }} -  {{ user.address2 }}
+        <br />
+        {{ user.codePostal }} {{ user.ville }}
+        <br />
+        {{ user.email }}
+    </p>
+</div>
+<div class="recap-wrapper">
+    <div class="recap-title-wrapper">
+        <h2>Vos Achats</h2>
+        <hr class="h-line"/>
+    </div>
+    {{ participation.enseigne.enseignename }} - {{ participation.datePurchased.date |date("m/d/Y", "Europe/Paris") }}
+    <p>
+      {{ book_name|convert_encoding('UTF-8', 'iso-8859-1') }} - ( {{ participation.eanProduct }} )
+        <br />
+        {{ book_name2|convert_encoding('UTF-8', 'iso-8859-1') }} -  ( {{ participation.eanProduct2 }} )
+    </p>
+</div>
+
+<div class="recap-wrapper">
+    <div class="recap-title-wrapper">
+        <h2>Votre cadeau</h2>
+        <hr class="h-line"/>
+    </div>
+    {{ participation.enseigne.enseignename }} - {{ participation.datePurchased.date |date("m/d/Y", "Europe/Paris") }}
+    <p>
+     <img class="img-responsive
+               img-center small"
+               src="{{ asset('build/images/'~ participation.product.image ) }}"
+               alt="image"
+               style="width:20em "/>
+     </p>
+</div>

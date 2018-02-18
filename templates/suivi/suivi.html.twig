@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col text-center">
+            <h1>Je vérifie le statut de ma demande de remboursement</h1>
+    
+            <form method="post" class="check-statut-wrapper" novalidate>
+                <div class="row">
+                    <div class="col-12 col-xl-12">
+                        {% if form_errors(form) %}
+                            <div class="form-group has-error">
+                                {{ form_errors(form) }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-12 col-xl-12">
+                        <div class="form-group{% if form_errors(form.email) %} has-error{% endif %}">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control required', 'placeholder': 'E-mail*', 'maxlength': 50}}) }}
+                            {{ form_errors(form.email) }}
+                        </div>
+                    </div>
+                    <div class="col-12 col-xl-12">
+                        <div class="form-group{% if form_errors(form.suivi) %} has-error{% endif %}">
+                            {{ form_widget(form.suivi, {'attr': {'class': 'form-control required', 'placeholder': 'Référence de participation*', 'maxlength': 13}}) }}
+                            {{ form_errors(form.suivi) }}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="btn-wrapper">
+                    <button type="submit" class="btn btn-primary">Valider</button>
+                    {{ form_widget(form._token) }}
+                </div>
+                <p class="text-center required-txt-wrapper"><sup>*</sup>Champs obligatoires</p>
+                <a class="link-primary" href="{{path('suivi_get_numero', {}) }}">Référence de participation oubliée ?</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
