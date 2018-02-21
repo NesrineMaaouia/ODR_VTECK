@@ -9,3 +9,5 @@ twig:
     cache: '%kernel.cache_dir%/twig'
     charset: '%kernel.charset%'
     debug: '%kernel.debug%'
+    form_themes:
+        - 'form/fields.html.twig'

@@ -16,6 +16,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Valid;
+use App\Form\ShippingType;
 
 class ParticipationType extends AbstractType
 {
@@ -48,7 +49,10 @@ class ParticipationType extends AbstractType
                 'widget' => 'single_text',
                 'html5' => false,
                 'format' => 'dd/MM/yyyy',
-            ]);
+            ])
+            ->add('product', ShippingType::class, array(
+                
+            ));
            /* ->add('product', ChoiceType::class, array(
                 'choices' => array($products),
 
